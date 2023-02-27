@@ -7,6 +7,24 @@ export default function EditNote({ note }) {
     const navigate = useNavigate()
     var curNote
     var curIndex
+    
+    const options = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+    };
+    
+    const formatDate = (when) => {
+        const formatted = new Date(when).toLocaleString("en-US", options);
+        console.log(formatted)
+        if (formatted === "Invalid Date") {
+            return "";
+        }
+        return formatted;
+    };
+
     for (var note in notes) {
         if (notes[note].id === id){
             curNote = notes[note]
@@ -33,7 +51,7 @@ export default function EditNote({ note }) {
         <div className="noteInfo">
             <div>
                 <h2>{curNote.title}</h2>
-                <small>{curNote.date}</small>
+                <small>{formatDate(new Date())}</small>
             </div>
             <div>
                 <label className="noteOption" onClick={handleSave}>Save</label>

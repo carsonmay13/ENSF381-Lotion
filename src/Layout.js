@@ -7,11 +7,16 @@ import {v4 as uuidv4} from'uuid';
 
 function Layout() {
   const navigate = useNavigate();
-  var [notes, setNotes] = useState([])
-
-  useEffect (() =>{
-    navigate('/notes')
-  }, [])
+  const LOCAL_STORAGE_KEY = 'notesApp.notes'
+  const [notes, setNotes] = useState(() =>{
+    const storedNotes = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+    if (storedNotes === null) {
+      return []
+    }
+    else{
+      return storedNotes
+    }
+  } )
 
   var activeNoteID;
   const [sidebar, setSidebar] = useState(false);
@@ -19,10 +24,19 @@ function Layout() {
   function addNote() {
     const id = uuidv4()
     setNotes(prevNotes => {
-      return [...prevNotes, {id: id, title: 'Untitled', text: 'Your text here', date: 'test'}]
+      return [...prevNotes, {id: id, title: 'Untitled', text: '', date: ''}]
     }) 
     navigate('notes/'+ id + '/edit')
   }
+
+  useEffect (() =>{
+    navigate('/notes')
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes))
+  }, [notes])
+
 
   return (
     <>
@@ -36,9 +50,9 @@ function Layout() {
               <h2>Notes</h2>
               <label id="addNote" onClick={addNote}>+</label>
           </div>
-          <ul className="nav-menu-items">
+          <div className="nav-menu-items">
             <NotesList notes={notes} activeID={activeNoteID} />
-          </ul>
+          </div>
       </nav>
       <div className={sidebar ? 'content menuActive' : 'content'}>
           <Outlet context={[notes, setNotes]} />

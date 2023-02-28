@@ -38,8 +38,7 @@ a {
   display:flex;
   height: 90vh;
   position: relative;
-  margin-left: 0px;
-  margin-right: 40px;
+  margin:0px;
   transition: 350ms;
   justify-content: center;
   align-items: center;
@@ -129,6 +128,7 @@ a {
   border-right: 0px;
   border-top: 0px;
   cursor: pointer;
+  overflow:hidden;
 }
 
 .note:hover{
@@ -141,9 +141,13 @@ a {
   color: grey;
 }
 
+.note h3 {
+  position: sticky;
+}
+
 .note span {
   flex-grow: 0.6;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .note.active {
@@ -168,9 +172,9 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 10px 0px 30px;
+  padding: 0px;
   z-index: 1;
-  border-bottom: 2px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
 }
 
 .noteOption {
@@ -188,10 +192,7 @@ hr {
   width: 100%;
 }
 
-#metaNote span {
-  padding: 20px;
-  font-size: 14px;
-}
+
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -210,4 +211,62 @@ hr {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #888; 
+}
+
+.notesList {
+  padding: 0px;
+  margin: 0px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.editDate {
+  border: 0px;
+  width: 200px;
+}
+
+.editDate:focus{
+  outline: none;
+}
+
+.editor-container {
+  width: 100%;
+  height: 100%;
+  border-right: 0px;
+}
+
+.ql-toolbar {
+  border: 0px !important;
+  border-bottom: 1px solid lightgrey !important;
+  padding-right: 70px !important;
+}
+
+.ql-container {
+  border: 0px !important;
+}
+
+.title-date {
+  padding-left: 15px;
+  display:flex;
+  flex-direction: column;
+}
+
+.view-text{
+  padding: 8px;
+  padding-left: 15px;
+  font-size: 13px;
+}
+
+.edit-title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  border: 0px;
+}
+
+.edit-title:focus{
+  outline: none;
+}
+
+.side-note {
+  font-size: 13px;
 }

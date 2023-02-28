@@ -7,6 +7,8 @@ export default function ViewNote() {
     const navigate = useNavigate()
     var curNote
     var curIndex
+
+
     for (var note in notes) {
         if (notes[note].id === id){
             curNote = notes[note]
@@ -27,7 +29,7 @@ export default function ViewNote() {
     return (
     <div id = "metaNote">
         <div className="noteInfo">
-            <div>
+            <div className="title-date">
                 <h2>{curNote.title}</h2>
                 <small>{curNote.date}</small>
             </div>
@@ -36,7 +38,7 @@ export default function ViewNote() {
                 <label className="noteOption" onClick={handleDelete}>Delete</label>
             </div>
         </div>
-        <span>{curNote.text}</span>
+        <div className="view-text" dangerouslySetInnerHTML={{__html: curNote.text}}></div>
     </div>
   )
 }

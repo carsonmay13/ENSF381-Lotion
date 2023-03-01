@@ -1,9 +1,6 @@
-import React, { useState, useRef, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import { v4 as uuidv4 } from 'uuid';
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
-import NotesList from "./components/NotesList"
-import Note from "./components/Note"
 import EditNote from "./components/EditNote"
 import ViewNote from "./components/ViewNote"
 

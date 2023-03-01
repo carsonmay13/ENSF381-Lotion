@@ -8,7 +8,8 @@ export default function EditNote() {
   var [notes, setNotes] = useOutletContext();
   const navigate = useNavigate();
   var curNote;
-  const [date, setDate] = useState(() => new Date().toISOString().slice(0, 19));
+  const d = new Date();
+  const [date, setDate] = useState(() => new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 19));
   const modules = {
     toolbar: [
       [{ header: [1, 2, false] }],

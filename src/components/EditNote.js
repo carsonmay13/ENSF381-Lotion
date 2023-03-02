@@ -6,6 +6,7 @@ import "react-quill/dist/quill.snow.css";
 export default function EditNote() {
   const id = useParams().noteID;
   var [notes, setNotes] = useOutletContext();
+  const LOCAL_STORAGE_KEY = "notesApp.notes";
   const navigate = useNavigate();
   var curNote;
   const d = new Date();
@@ -48,15 +49,15 @@ export default function EditNote() {
     const answer = window.confirm("Are you sure?");
     if (answer) {
       notes = notes.filter((note) => note.id !== id);
+      navigate("/notes/");
     }
-    setNotes(notes);
-    navigate("/notes/");
   }
 
   function handleSave() {
     curNote.date = formatDate(date);
     curNote.text = value;
     curNote.title = title;
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(notes));
     navigate("/notes/" + id);
   }
 

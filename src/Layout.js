@@ -17,7 +17,6 @@ function Layout() {
     }
   });
 
-  var activeNoteID;
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
   function addNote() {
@@ -55,7 +54,7 @@ function Layout() {
           </label>
         </div>
         <div className="nav-menu-items">
-          <NotesList notes={notes} activeID={activeNoteID} />
+          <NotesList notes={notes} />
         </div>
       </nav>
       <div className={sidebar ? "content menuActive" : "content"}>

@@ -254,6 +254,7 @@ hr {
   padding: 8px;
   padding-left: 15px;
   font-size: 13px;
+  overflow: auto;
 }
 
 .edit-title {
@@ -272,4 +273,9 @@ hr {
   top: 45px;
   height: 43px;
   overflow: hidden;
+}
+
+#root {
+  overflow: hidden;
+  height: 100vh;
 }

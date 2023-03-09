@@ -49,6 +49,7 @@ export default function EditNote() {
     const answer = window.confirm("Are you sure?");
     if (answer) {
       notes = notes.filter((note) => note.id !== id);
+      setNotes(notes);
       navigate("/notes/");
     }
   }

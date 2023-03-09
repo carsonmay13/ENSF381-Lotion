@@ -20,11 +20,18 @@ function Layout() {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
   function addNote() {
-    const id = uuidv4();
-    setNotes((prevNotes) => {
-      return [...prevNotes, { id: id, title: "Untitled", text: "...", date: "" }];
-    });
-    navigate("notes/" + id + "/edit");
+    var sPath = window.location.pathname;
+    var sPage = sPath.substring(sPath.lastIndexOf('/') + 1);
+    if(sPage == "edit"){
+      window.alert("Please save this note before creating a new one.")
+    }
+    else{
+      const id = uuidv4();
+      setNotes((prevNotes) => {
+        return [...prevNotes, { id: id, title: "Untitled", text: "...", date: "" }];
+      });
+      navigate("notes/" + id + "/edit");
+    }
   }
 
   useEffect(() => {
